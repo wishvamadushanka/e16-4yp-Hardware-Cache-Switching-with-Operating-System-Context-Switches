@@ -1,4 +1,8 @@
 
+// `include "../modules/units/instruction_decode_unit.v"
+// `include "../modules/units/instruction_execute_unit.v"
+// `include "../modules/units/instruction_fetch_unit.v"
+// `include "../modules/units/memory_access_unit.v"
 
 module cpu(
     input clk,
@@ -41,7 +45,7 @@ module cpu(
     busywait
     );
   
-  IF if_reg(
+  IF if_id_reg(
     pc_instruction_fetch_unit_out, 
     pc_4_instruction_fetch_unit_out, 
     instruction_instruction_fetch_unit_out, 
@@ -82,7 +86,7 @@ module cpu(
     );
 
   
-  ID id_reg(
+  ID id_ex_reg(
   rotate_signal_id_unit_out,
   d_mem_r_id_unit_out, 
 	d_mem_w_id_unit_out,
@@ -149,7 +153,7 @@ module cpu(
     branch_or_jump_signal
   );
 
-  EX ex_reg(
+  EX ex_mem_reg(
     d_mem_r_id_reg_out, 
 	  d_mem_w_id_reg_out,
     mux_d_mem_id_reg_out,
