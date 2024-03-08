@@ -1,12 +1,13 @@
 `timescale 1ns/100ps
 
-`include "../cpu/cpu.v"
+// `include "../cpu/cpu.v"
 
 module cpuTestbench; 
 
     reg CLK, RESET;
+    wire [31:0] reg0_output,reg1_output,reg2_output,reg3_output,reg4_output,reg5_output,reg6_output,pc_debug,instruction_debug;
 
-    cpu mycpu(CLK,RESET);
+    cpu mycpu(CLK,RESET,reg0_output,reg1_output,reg2_output,reg3_output,reg4_output,reg5_output,reg6_output,pc_debug,instruction_debug);
 
     always
         #5 CLK = ~CLK;
