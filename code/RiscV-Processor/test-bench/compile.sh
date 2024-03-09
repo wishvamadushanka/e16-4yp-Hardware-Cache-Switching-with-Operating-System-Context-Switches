@@ -11,8 +11,8 @@ cpu_tb.v \
 ../modules/data-cache/dmem_customable.v \
 ../modules/data-load-controller/Data_load_controller.v \
 ../modules/data-store-controller/Data_store_controller.v \
-../modules/i-cache/icache.v \
-../modules/i-cache/imem_for_icache.v \
+../modules/i-cache/icache_customable.v \
+../modules/i-cache/imem_customable.v \
 ../modules/LCD/hex2_char.v \
 ../modules/LCD/lcd_controller.v \
 ../modules/LCD/lcd_display.v \

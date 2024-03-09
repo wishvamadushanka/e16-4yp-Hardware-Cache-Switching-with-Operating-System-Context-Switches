@@ -18,6 +18,21 @@ module cpuTestbench;
         // generate files needed to plot the waveform using GTKWave
         $dumpfile("cpu_wavedata.vcd");
 		$dumpvars(0, cpuTestbench);
+
+        $dumpvars(0, mycpu.if_unit.i_cache.c_valid_bit[0][0]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_valid_bit[1][1]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_valid_bit[1][2]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_valid_bit[1][3]);
+
+        $dumpvars(0, mycpu.if_unit.i_cache.data_frm_c[0]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_tag[1][1]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_tag[1][2]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_tag[1][3]);
+
+        $dumpvars(0, mycpu.if_unit.i_cache.c_word[0][0]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_word[1][1]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_word[1][2]);
+        // $dumpvars(0, mycpu.if_unit.i_cache.c_word[1][3]);
 		
         
         CLK = 1'b0;
@@ -31,6 +46,7 @@ module cpuTestbench;
 		RESET = 1'b0;
 		// #4
 		// RESET = 1'b0;
+        
         
         // finish simulation after some time
         #6000

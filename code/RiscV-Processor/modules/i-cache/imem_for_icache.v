@@ -1,4 +1,4 @@
-`timescale  1ns/100ps
+// `timescale  1ns/100ps
 module Instruction_memory(
     reset,
     clock,
@@ -41,58 +41,10 @@ begin
          {memory_array[32'd63], memory_array[32'd62], memory_array[32'd61], memory_array[32'd60]} <= 32'b11110010110100001010000110100011;
 end
 
-//ADDI x1,x1,0x8F1
-//ADDI x17,x17,0x8F1
-//ORI x12,x17,0x800
-//AND x13,x17,x11
-//LB x12,0x001(x13)
-//BEQ x4,x5,0x014
-
-
-// ADDI x1,x1,0x8F1
-// ORI x12,x1,0x800
-// SB x1,0xF23(x12)
-// SW x12,0xF23(x1)
-// LB x2,0xF23(x12)
-// LW x13,0xF23(x1)
-
-
-
-
-
-// ADDI x1,x1,0x8F1
-// ANDI x12,x1,0x000 
-
-// SB x1,0x001(x12)  
-
-// LB x2,0xF23(x12) 
-// SW  x12,0xF23(x1) 
-// LW x13,0xF23(x1)
-// SW  x13,0xF23(x1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Detecting an incoming memory access
 always @ (posedge clock)
 begin
+    #1
 	if(read) begin
 		readaccess = 1'b1;
 	end else begin
@@ -104,11 +56,12 @@ end
 
 
 
-always @(posedge clock, negedge busywait, posedge readaccess)
+always @(posedge clock, negedge busywait)
 begin
 	if(~busywait) begin
 		count = 5'd15;
-	end else if(readaccess) begin
+	end 
+    else if(readaccess) begin
 		count = count - 5'd1;
 	end
 	
@@ -125,7 +78,7 @@ begin
     end
     else if(read)
     begin
-        busywait =1;
+        busywait = 1;
         readdata     =  memory_array[{address,count}];
 		  
 		  if(count == 5'd0)begin

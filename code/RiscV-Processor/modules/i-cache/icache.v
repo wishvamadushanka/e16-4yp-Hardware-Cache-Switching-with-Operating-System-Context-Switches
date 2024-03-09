@@ -18,12 +18,13 @@ module icache (clock,
 
     wire valid,mem_busywait;
     wire [1:0] offset;
-    wire [2:0] tag,index; 
+    wire [2:0] index; 
     wire [127:0] mem_readdata;
+    wire [24:0]tag;
 
     reg hit,mem_read,write_from_mem;
     reg valid_bits[0:7];
-    reg [2:0] tags[0:7];
+    reg [24:0] tags[0:7];
     reg [31:0] word[0:7][0:3];
     reg [27:0] mem_address;
     
@@ -77,7 +78,7 @@ module icache (clock,
 
     /* Cache Controller FSM Start */
 
-    parameter IDLE = 3'b000, MEM_READ = 3'b001,CACHE_WRITE=3'b011;
+    parameter IDLE = 3'b000, MEM_READ = 3'b001, CACHE_WRITE=3'b011;
     reg [2:0] state, next_state;
 
     // combinational next state logic

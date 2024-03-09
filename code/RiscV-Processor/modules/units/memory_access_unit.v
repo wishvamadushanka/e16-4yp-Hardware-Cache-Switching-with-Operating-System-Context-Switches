@@ -25,7 +25,7 @@ module memory_access_unit (
     Data_load_controller dlc(func3,from_data_cache_out,load_data);
 
     dcache #( .c_line_size(c_line_size), .c_assiotivity(c_assiotivity), .c_index(c_index), .c_block_size(c_block_size), .address_size(address_size) ) 
-    mycache(data_memory_busywait, from_data_cache_out, c_m_write_data_o, c_m_read_o, c_m_wr_o, c_m_address_o, reset, clock, mux4_out_result, mem_read_signal, mem_write_signal, store_data, c_m_busywait_i, c_m_read_data_i, m_write_done, m_read_done);
+    dcache(data_memory_busywait, from_data_cache_out, c_m_write_data_o, c_m_read_o, c_m_wr_o, c_m_address_o, reset, clock, mux4_out_result, mem_read_signal, mem_write_signal, store_data, c_m_busywait_i, c_m_read_data_i, m_write_done, m_read_done);
     
     dmemory #(.c_block_size(c_block_size), .c_line_size(c_line_size), .address_size(address_size), .mem_line_size(mem_line_size) ) 
     data_memory(c_m_busywait_i, c_m_read_data_i, m_write_done, m_read_done, clock, reset, c_m_read_o, c_m_wr_o, c_m_address_o, c_m_write_data_o);
