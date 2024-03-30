@@ -20,6 +20,7 @@ module reg_file (OUT1, OUT2, IN, INADDRESS, OUT1ADDRESS, OUT2ADDRESS, WRITE, CLK
 	always @ (posedge CLK,posedge RESET)			
 	begin
 		//writting part
+		// #1
 		if(RESET)
 		begin
 				for(j = 0; j <= 31; j = j +1 )

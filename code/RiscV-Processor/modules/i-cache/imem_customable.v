@@ -32,7 +32,7 @@ module imemory #(parameter  c_block_size = 2, c_line_size = 32, address_size = 3
     // assign mem_access <= (m_read_i || m_wr_data_i);
 
     initial begin
-        $readmemh("./mem.data", memory);
+        $readmemh("./i.mem", memory);
     end
 
     // assign m_read_data_o = {memory[0], memory[1], memory[2], memory[3]};

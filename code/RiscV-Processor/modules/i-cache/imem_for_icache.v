@@ -81,11 +81,11 @@ begin
         busywait = 1;
         readdata     =  memory_array[{address,count}];
 		  
-		  if(count == 5'd0)begin
-				busywait = 0;
-		  end else begin
-				readdata = readdata << 8;
-			end
+        if(count == 5'd0)begin
+            busywait = 0;
+        end else begin
+            readdata = readdata << 8;
+		end
 		  
     end
 end
